@@ -15,11 +15,13 @@
     "@mui/icons-material": "^6.1.4",
     "@mui/material": "^6.1.4",
     "@mui/material-nextjs": "^6.1.4",
+    "axios": "^1.7.7",
     "better-sqlite3": "^11.3.0",
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.53.0"
+    "react-hook-form": "^7.53.0",
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
     "@types/node": "^20",

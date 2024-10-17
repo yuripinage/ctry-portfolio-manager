@@ -20,6 +20,7 @@ const Portfolio = ({ companies }: PortfolioProps) => {
 	};
 
 	// Render a row for each company
+	// TODO: Format currency and strings from DB
 	const renderRow = (company: Company) => {
 		return (
 			<tr>
