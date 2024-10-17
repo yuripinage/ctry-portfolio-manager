@@ -4,6 +4,7 @@ import { Company } from '@/types/Company';
 
 const fetchCompanies = async (): Promise<Company[]> => {
 	const { data } = await axios.get('http://localhost:3000/api/companies');
+
 	return data;
 };
 

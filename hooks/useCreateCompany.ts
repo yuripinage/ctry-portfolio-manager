@@ -9,6 +9,7 @@ const createCompany = async (
 		'http://localhost:3000/api/companies',
 		company
 	);
+
 	return data;
 };
 

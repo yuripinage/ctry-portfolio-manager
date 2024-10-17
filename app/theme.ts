@@ -8,6 +8,7 @@ const roboto = Roboto({
 	display: 'swap',
 });
 
+// CUSTOM THEME
 const theme = createTheme({
 	typography: {
 		fontFamily: roboto.style.fontFamily,
