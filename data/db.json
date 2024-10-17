@@ -1,0 +1,12 @@
+[
+	{
+		"id": 1234,
+		"name": "The Laboratory",
+		"founders": "Dexter",
+		"status": "Active",
+		"valuation": 15,
+		"fundingRound": "Series B",
+		"investedAmount": 2,
+		"riskEvaluation": 4
+	}
+]

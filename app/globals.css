@@ -3,15 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #102f99;
+  --foreground: #ededed;
 }
 
 body {
@@ -24,4 +17,36 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* CUSTOM CSS */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.table-wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+.table-wrapper th {
+  background: grey;
+  padding: 16px;
+  width: 160px;
+  border: 1px solid black;
+}
+.table-wrapper td {
+  background: var(--foreground);
+  color: black;
+  padding: 16px;
+  width: 160px;
+  border: 1px solid black;
 }
