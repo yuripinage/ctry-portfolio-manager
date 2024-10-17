@@ -5,7 +5,7 @@ import CompanyForm from '@/components/CompanyForm';
 import Portfolio from '@/components/Portfolio';
 
 const Home = () => {
-	const { data, isLoading, error } = useFetchCompanies();
+	const { data, isLoading, error, refetch } = useFetchCompanies();
 	const errorMessage = error?.message || 'No companies in the portfolio yet.';
 
 	return (
@@ -22,8 +22,8 @@ const Home = () => {
 							<Typography variant="body1">
 								{errorMessage}
 							</Typography>
-						)}{' '}
-						<CompanyForm />
+						)}
+						<CompanyForm onSuccess={refetch} />
 					</>
 				)}
 			</main>
