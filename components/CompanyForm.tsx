@@ -7,9 +7,7 @@ import {
 	DialogTitle,
 	DialogContent,
 	DialogActions,
-	FormControl,
 	Input,
-	InputLabel,
 	MenuItem,
 	Select,
 } from '@mui/material';
