@@ -19,41 +19,64 @@ const Portfolio = ({ companies }: PortfolioProps) => {
 			.replace(/^./, (str) => str.toUpperCase());
 	};
 
+	// Format company params into a human-readable format
+	const formatRowItem = (
+		key: keyof Company,
+		value: string | number
+	): string => {
+		if (typeof value === 'number') {
+			return `$${value}M`;
+		}
+
+		if (key === 'fundingRound' && value.includes('series')) {
+			return value
+				.split('-')
+				.map((word, index) => {
+					if (index === 0) {
+						return word.charAt(0).toUpperCase() + word.slice(1);
+					}
+					return word.toUpperCase();
+				})
+				.join(' ');
+		}
+
+		return value.charAt(0).toUpperCase() + value.slice(1);
+	};
+
 	// Render a row for each company
-	// TODO: Format currency and strings from DB
 	const renderRow = (company: Company) => {
 		return (
 			<tr>
 				{Object.entries(company)
 					.filter(([key]) => key !== 'id')
 					.map(([key, value], index) => {
-						return <td key={`${key}-${index}`}>{value}</td>;
+						return (
+							<td key={`${key}-${index}`}>
+								{formatRowItem(key as keyof Company, value)}
+							</td>
+						);
 					})}
 			</tr>
 		);
 	};
 
 	return (
-		<>
-			<Box className="table-wrapper">
-				<table>
-					<thead>
-						<tr>
-							{tableHeaderKeys.map((key) => {
-								return (
-									<th key={`tableHeader-${key}`}>
-										{formatHeaderTitle(key)}
-									</th>
-								);
-							})}
-						</tr>
-					</thead>
-					<tbody>
-						{companies.map((company) => renderRow(company))}
-					</tbody>
-				</table>
-			</Box>
-		</>
+		<Box className="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						{tableHeaderKeys.map((key) => {
+							return (
+								<th key={`tableHeader-${key}`}>
+									{formatHeaderTitle(key)}
+								</th>
+							);
+						})}
+					</tr>
+				</thead>
+				<tbody>{companies.map((company) => renderRow(company))}</tbody>
+			</table>
+		</Box>
 	);
 };
 
