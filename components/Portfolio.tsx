@@ -7,15 +7,14 @@ type PortfolioProps = {
 
 // The Portfolio component displays a table of companies
 // It dynamically generates headers and rendering rows for each company in the array
-
 const Portfolio = ({ companies }: PortfolioProps) => {
 	const tableHeaderKeys = Object.keys(companies[0]).filter(
 		(item) => item !== 'id'
 	);
 
 	// Format camel case into a human-readable format
-	const formatHeaderTitle = (text: string): string => {
-		return text
+	const formatHeaderTitle = (key: string): string => {
+		return key
 			.replace(/([A-Z])/g, ' $1')
 			.replace(/^./, (str) => str.toUpperCase());
 	};

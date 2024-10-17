@@ -7,9 +7,9 @@ export type Company = {
 	id: number;
 	name: string;
 	founders: string;
-	status: string;
 	valuation: number;
-	fundingRound: string;
 	investedAmount: number;
+	fundingRound: string;
+	status: string;
 	riskEvaluation: number;
 };

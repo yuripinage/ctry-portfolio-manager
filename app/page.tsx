@@ -1,8 +1,9 @@
 'use client';
-import Portfolio from '@/components/Portfolio';
-import { Company } from '@/types/Company';
 import companies from '@/data/db.json';
 import { Box, Typography } from '@mui/material';
+import { Company } from '@/types/Company';
+import CompanyForm from '@/components/CompanyForm';
+import Portfolio from '@/components/Portfolio';
 
 export default function Home() {
 	return (
@@ -10,6 +11,7 @@ export default function Home() {
 			<main className="flex flex-col gap-8 row-start-2 items-center justify-center">
 				<Typography variant="h3">Portfolio Manager</Typography>
 				<Portfolio companies={companies as Company[]} />
+				<CompanyForm />
 			</main>
 		</Box>
 	);
