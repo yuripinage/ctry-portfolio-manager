@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #102f99;
+  --background: #0f111a;
   --foreground: #ededed;
 }
 
@@ -28,7 +28,7 @@ body {
   text-align: center;
 }
 .table-wrapper th {
-  background: grey;
+  background: #184df6;
   padding: 16px;
   width: 160px;
   border: 1px solid black;
