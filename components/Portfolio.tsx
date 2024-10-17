@@ -20,11 +20,8 @@ const Portfolio = ({ companies }: PortfolioProps) => {
 	};
 
 	// Format company params into a human-readable format
-	const formatRowItem = (
-		key: keyof Company,
-		value: string | number
-	): string => {
-		if (typeof value === 'number') {
+	const formatRowItem = (key: keyof Company, value: string): string => {
+		if (key === 'valuation' || key === 'investedAmount') {
 			return `$${value}M`;
 		}
 
@@ -52,7 +49,10 @@ const Portfolio = ({ companies }: PortfolioProps) => {
 					.map(([key, value], index) => {
 						return (
 							<td key={`${key}-${index}`}>
-								{formatRowItem(key as keyof Company, value)}
+								{formatRowItem(
+									key as keyof Company,
+									`${value}`
+								)}
 							</td>
 						);
 					})}

@@ -16,13 +16,13 @@ import useCreateCompany from '@/hooks/useCreateCompany';
 import { Company } from '@/types/Company';
 import FormItem from './FormItem';
 
-type CompanyFormDialogProps = {
+type CompanyFormProps = {
 	onSuccess: () => void;
 };
 
 // Dialog with a form for adding a new company to the portfolio
 // TODO: Remove open button and make the component be just the dialog
-const CompanyFormDialog = ({ onSuccess }: CompanyFormDialogProps) => {
+const CompanyForm = ({ onSuccess }: CompanyFormProps) => {
 	const {
 		register,
 		handleSubmit,
@@ -211,4 +211,4 @@ const CompanyFormDialog = ({ onSuccess }: CompanyFormDialogProps) => {
 	);
 };
 
-export default CompanyFormDialog;
+export default CompanyForm;
