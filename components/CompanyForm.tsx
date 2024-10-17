@@ -3,18 +3,21 @@ import { useForm } from 'react-hook-form';
 import {
 	Box,
 	Button,
+	CircularProgress,
 	Dialog,
-	DialogTitle,
-	DialogContent,
 	DialogActions,
+	DialogContent,
+	DialogTitle,
 	Input,
 	MenuItem,
 	Select,
 } from '@mui/material';
+import useCreateCompany from '@/hooks/useCreateCompany';
 import { Company } from '@/types/Company';
 import FormItem from './FormItem';
 
 // Dialog with a form for adding a new company to the portfolio
+// TODO: Remove open button and make the component be just the dialog
 const CompanyFormDialog = () => {
 	const {
 		register,
@@ -22,6 +25,7 @@ const CompanyFormDialog = () => {
 		reset,
 		formState: { errors },
 	} = useForm<Company>();
+	const { mutate, isLoading } = useCreateCompany();
 	const [open, setOpen] = useState(false);
 
 	const handleClose = () => {
@@ -29,8 +33,13 @@ const CompanyFormDialog = () => {
 		reset();
 	};
 
-	const onSubmit = (data: Company) => {
-		console.log(data);
+	const onSubmit = (formData: Company) => {
+		mutate(formData, {
+			onSuccess: () => {
+				handleClose();
+			},
+			onError: () => {},
+		});
 	};
 
 	return (
@@ -39,7 +48,13 @@ const CompanyFormDialog = () => {
 				Add Company
 			</Button>
 
-			<Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+			<Dialog
+				open={open}
+				onClose={handleClose}
+				fullWidth
+				maxWidth="sm"
+				disableEscapeKeyDown={isLoading}
+			>
 				<DialogTitle>Add Company</DialogTitle>
 				<DialogContent>
 					<form onSubmit={handleSubmit(onSubmit)}>
@@ -164,13 +179,24 @@ const CompanyFormDialog = () => {
 				</DialogContent>
 
 				<DialogActions>
-					<Button onClick={handleClose}>Cancel</Button>
+					<Button
+						variant="outlined"
+						onClick={handleClose}
+						disabled={isLoading}
+					>
+						Cancel
+					</Button>
 					<Button
 						type="submit"
 						form="companyForm"
 						onClick={handleSubmit(onSubmit)}
+						disabled={isLoading}
 					>
-						Add Company
+						{isLoading ? (
+							<CircularProgress size={24} />
+						) : (
+							'Add Company'
+						)}
 					</Button>
 				</DialogActions>
 			</Dialog>

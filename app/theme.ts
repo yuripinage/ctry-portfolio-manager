@@ -21,11 +21,25 @@ const theme = createTheme({
 					color: '#fff',
 					borderRadius: '5px',
 					cursor: 'pointer',
+					width: '200px',
 					'&:hover': {
 						backgroundColor: '#143bcc',
 					},
 					'&:active': {
 						backgroundColor: '#0e2a99',
+					},
+				},
+				outlined: {
+					color: '#184df6',
+					backgroundColor: 'transparent',
+					border: '1px solid #184df6',
+					'&:hover': {
+						backgroundColor: '#143bcc',
+						color: '#fff',
+					},
+					'&:active': {
+						backgroundColor: '#0e2a99',
+						color: '#fff',
 					},
 				},
 			},
@@ -35,6 +49,13 @@ const theme = createTheme({
 				root: {
 					background: '#fff',
 					padding: '0px 2px',
+				},
+			},
+		},
+		MuiCircularProgress: {
+			styleOverrides: {
+				root: {
+					color: '#fff',
 				},
 			},
 		},
