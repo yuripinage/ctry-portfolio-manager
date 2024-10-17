@@ -13,10 +13,17 @@ import {
 	MenuItem,
 	Select,
 } from '@mui/material';
+import { Company } from '@/types/Company';
+import FormItem from './FormItem';
 
 // Dialog with a form for adding a new company to the portfolio
 const CompanyFormDialog = () => {
-	const { register, handleSubmit, reset } = useForm();
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<Company>();
 	const [open, setOpen] = useState(false);
 
 	const handleClose = () => {
@@ -24,7 +31,7 @@ const CompanyFormDialog = () => {
 		reset();
 	};
 
-	const onSubmit = (data: any) => {
+	const onSubmit = (data: Company) => {
 		console.log(data);
 	};
 
@@ -44,49 +51,59 @@ const CompanyFormDialog = () => {
 							gap={2}
 							py={2}
 						>
-							<FormControl required>
-								<InputLabel>Company Name</InputLabel>
+							<FormItem
+								label="Company name"
+								errorMessage={errors.name?.message}
+							>
 								<Input
-									{...register('name', { required: true })}
+									{...register('name', {
+										required: 'Company name is required',
+									})}
 								/>
-							</FormControl>
+							</FormItem>
 
-							<FormControl required>
-								<InputLabel>Founders</InputLabel>
+							<FormItem
+								label="Founders"
+								errorMessage={errors.founders?.message}
+							>
 								<Input
 									{...register('founders', {
-										required: true,
+										required: 'Founders is required',
 									})}
 								/>
-							</FormControl>
+							</FormItem>
 
-							<FormControl required>
-								<InputLabel>Valuation (in millions)</InputLabel>
+							<FormItem
+								label="Valuation (in millions)"
+								errorMessage={errors.valuation?.message}
+							>
 								<Input
 									{...register('valuation', {
-										required: true,
+										required: 'Valuation is required',
 									})}
 									type="number"
 								/>
-							</FormControl>
+							</FormItem>
 
-							<FormControl required>
-								<InputLabel>
-									Invested Amount (in millions)
-								</InputLabel>
+							<FormItem
+								label="Invested Amount (in millions)"
+								errorMessage={errors.investedAmount?.message}
+							>
 								<Input
 									{...register('investedAmount', {
-										required: true,
+										required: 'Invested Amount is required',
 									})}
 									type="number"
 								/>
-							</FormControl>
+							</FormItem>
 
-							<FormControl required>
-								<InputLabel>Funding Round</InputLabel>
+							<FormItem
+								label="Funding Round"
+								errorMessage={errors.fundingRound?.message}
+							>
 								<Select
 									{...register('fundingRound', {
-										required: true,
+										required: 'Funding Round is required',
 									})}
 								>
 									<MenuItem value="pre-seed">
@@ -109,12 +126,16 @@ const CompanyFormDialog = () => {
 										Series E
 									</MenuItem>
 								</Select>
-							</FormControl>
+							</FormItem>
 
-							<FormControl required>
-								<InputLabel>Status</InputLabel>
+							<FormItem
+								label="Status"
+								errorMessage={errors.status?.message}
+							>
 								<Select
-									{...register('status', { required: true })}
+									{...register('status', {
+										required: 'Status is required',
+									})}
 								>
 									<MenuItem value="active">Active</MenuItem>
 									<MenuItem value="acquired">
@@ -122,13 +143,15 @@ const CompanyFormDialog = () => {
 									</MenuItem>
 									<MenuItem value="sold">Sold</MenuItem>
 								</Select>
-							</FormControl>
+							</FormItem>
 
-							<FormControl required>
-								<InputLabel>Risk Evaluation</InputLabel>
+							<FormItem
+								label="Risk Evaluation"
+								errorMessage={errors.riskEvaluation?.message}
+							>
 								<Select
 									{...register('riskEvaluation', {
-										required: true,
+										required: 'Risk Evaluation is required',
 									})}
 								>
 									<MenuItem value={1}>1</MenuItem>
@@ -137,7 +160,7 @@ const CompanyFormDialog = () => {
 									<MenuItem value={4}>4</MenuItem>
 									<MenuItem value={5}>5</MenuItem>
 								</Select>
-							</FormControl>
+							</FormItem>
 						</Box>
 					</form>
 				</DialogContent>
