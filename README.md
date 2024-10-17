@@ -4,8 +4,10 @@ This project is a study on **Next.js 14**, focusing on building a portfolio mana
 
 ## Preview
 <p align="center">
-  <img src="https://i.imgur.com/qTgo202_d.webp?maxwidth=1520&fidelity=grand" width="600px"/>
+  <img src="https://github.com/user-attachments/assets/33044e42-165a-4cee-8dad-53427200aa21" width="700px"/>
 </p>
+
+
 
 ## Features
 
